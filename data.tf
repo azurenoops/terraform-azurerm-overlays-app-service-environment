@@ -3,3 +3,31 @@
 
 # remove file if not needed
 data "azurerm_client_config" "current" {}
+
+data "azurerm_subnet" "ase_subnet" {
+depends_on = [
+    module.mod_scaffold_rg]
+  name                 = var.ase_subnet_name
+  virtual_network_name = var.virtual_network_name
+  resource_group_name  = local.resource_group_name
+}
+
+data "azurerm_virtual_network" "vnet" { 
+depends_on = [
+    module.mod_scaffold_rg]
+  name                = var.virtual_network_name
+  resource_group_name = local.resource_group_name
+}
+
+data "azurerm_app_service_environment_v3" "ase" {
+    depends_on = [
+        azurerm_app_service_environment_v3.ase
+    ]
+    name = local.ase_name
+    resource_group_name = local.resource_group_name
+}
+data "azurerm_resource_group" "rg" {
+depends_on = [
+    module.mod_scaffold_rg]
+  name = local.resource_group_name
+}
