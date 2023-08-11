@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
 resource "azurerm_network_security_group" "ase-nsg" {
 
   name                = local.ase_nsg_name
@@ -84,6 +87,7 @@ resource "azurerm_network_security_group" "ase-nsg" {
   }
   tags = merge(var.add_tags, local.default_tags)
 }
+
 data "azurerm_network_security_group" "ase-nsg" {
   depends_on = [
     azurerm_network_security_group.ase-nsg
