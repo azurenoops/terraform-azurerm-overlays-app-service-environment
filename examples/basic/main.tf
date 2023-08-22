@@ -4,7 +4,7 @@ module "mod_app_service_environment" {
   #source  = "azurenoops/overlays-app-service-environment/azurerm"
   #version = "~> 1.0"
 
-   depends_on = [azurerm_resource_group.ase-rg]
+  depends_on = [azurerm_resource_group.ase-rg]
 
   existing_resource_group_name = azurerm_resource_group.ase-rg.name
   location                     = module.mod_azure_region_lookup.location_cli
