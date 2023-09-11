@@ -1,7 +1,6 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT License.
 
-
 ###########################
 # Global Configuration   ##
 ###########################
@@ -35,7 +34,7 @@ variable "org_name" {
 # RG Configuration   ##
 #######################
 
-variable "create_resource_group" {
+variable "create_ase_resource_group" {
   description = "Controls if the resource group should be created. If set to false, the resource group name must be provided. Default is false."
   type        = bool
   default     = false
@@ -51,28 +50,4 @@ variable "existing_resource_group_name" {
   description = "The name of the existing resource group to use. If not set, the name will be generated using the `org_name`, `workload_name`, `deploy_environment` and `environment` variables."
   type        = string
   default     = null
-}
-#########################
-# Network configuration #
-#########################
-variable "virtual_network_name" {
-  description = "Name of the virtual network"
-  type        = string
-}
-variable "ase_subnet_name" {
-  description = "Name of the subnet"
-  type        = string
-}
-#########################
-# ASE configuration     #
-#########################
-variable "ase_custom_name" {
-  description = "Custom name for the ASE. If not set, the name will be generated using the `org_name`, `workload_name`, `deploy_environment` and `environment` variables."
-  type        = string
-  default     = null
-}
-variable "allow_new_private_endpoint_connections" {
-  description = "Allow new private endpoint connections to the ASE. Default is true."
-  type        = bool
-  default     = true
 }
